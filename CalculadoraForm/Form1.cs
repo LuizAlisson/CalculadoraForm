@@ -22,8 +22,36 @@ namespace CalculadoraForm
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            //implementar depois..
+            try
+            {
+                // 1️⃣ Pega a expressão completa que o usuário digitou no TextBox
+                string expressao = txbTela.Text;
+
+                // 2️⃣ Calcula a expressão usando DataTable().Compute
+                //     Isso permite calcular múltiplos operadores e respeitar a ordem correta (* e / antes de + e -)
+                var resultado = new System.Data.DataTable().Compute(expressao, "").ToString();
+
+                // 3️⃣ Mostra o resultado no TextBox
+                if (double.IsInfinity(Convert.ToDouble(resultado)))
+                {
+                    MessageBox.Show("Deu ruim parsa!");
+                    txbTela.Text = "";
+                }
+                else
+                {
+                    txbTela.Text = resultado; // já é string
+                }
+
+
+
+            }
+            catch
+            {
+                // Caso a expressão esteja inválida (ex: "2++3"), mostra uma mensagem de erro
+                MessageBox.Show("Expressão inválida!");
+            }
         }
+        
         private void numero_Click(object sender, EventArgs e)
         {
            //Obter um botão que está chamando esse evento:
@@ -48,5 +76,15 @@ namespace CalculadoraForm
             }
             
         }
+
+        private void btnC_Click(object sender, EventArgs e)
+        {
+            //Limpar a tela: 
+            txbTela.Text = "";
+            //Voltar o operador clicado para true:
+            operadorClicado = true;
+
+        }
+
     }
 }

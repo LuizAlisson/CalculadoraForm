@@ -272,6 +272,7 @@
             this.btnC.TabIndex = 15;
             this.btnC.Text = "C";
             this.btnC.UseVisualStyleBackColor = false;
+            this.btnC.Click += new System.EventHandler(this.btnC_Click);
             // 
             // txbTela
             // 
@@ -290,7 +291,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(69)))), ((int)(((byte)(89)))));
-            this.ClientSize = new System.Drawing.Size(414, 351);
+            this.ClientSize = new System.Drawing.Size(409, 343);
             this.Controls.Add(this.txbTela);
             this.Controls.Add(this.btnC);
             this.Controls.Add(this.btnDividir);
